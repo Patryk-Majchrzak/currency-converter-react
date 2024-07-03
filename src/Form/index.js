@@ -5,14 +5,15 @@ import Result from "./Result";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
     const [amount, setAmount] = useState("");
+    
     const changeAmount = ({ target }) => setAmount(target.value);
 
     const [result, setResult] = useState("");
 
     const ratebase = currencies
-        .find(({short}) => short === currencyFrom)
+        .find(({short}) => short === currencyFrom);
 
-    const rate = ratebase[currencyTo]
+    const rate = ratebase[currencyTo];
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -73,7 +74,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                 Dane liczone wg kursów z dnia 21.06.2024
             </p>
         </form>
-    )
-}
+    );
+};
 
 export default Form;
