@@ -1,8 +1,8 @@
 import "./style.css"
 
 const Container = ({children}) => (
-    <div class="flexBox">
-        <div class="flexBox__container">
+    <div className="flexBox">
+        <div className="flexBox__container">
             {children}
         </div>
     </div>
