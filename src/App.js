@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Currencies from "./Currencies";
-
+import Document from "./Document";
 
 const currencies =
   [ 
@@ -21,7 +21,7 @@ function App() {
   const changeCurrencyFrom = ({target}) => setCurrencyFrom(target.value);
 
   return (
-    <>
+    <Document>
       <button className="document__button">Włącz ciemny motyw</button>
       <div className="flexBox">
         <div className="flexBox__container">
@@ -68,7 +68,7 @@ function App() {
           </section>
         </div>
       </div>
-    </>
+    </Document>
   );
 }
 
