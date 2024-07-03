@@ -1,6 +1,6 @@
 import "./style.css"
 
-const Document = ({children}) => (
+const Document = ({ children }) => (
     <main className="document">
         {children}
     </main>

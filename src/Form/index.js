@@ -5,13 +5,13 @@ import Result from "./Result";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
     const [amount, setAmount] = useState("");
-    
+
     const changeAmount = ({ target }) => setAmount(target.value);
 
     const [result, setResult] = useState("");
 
     const ratebase = currencies
-        .find(({short}) => short === currencyFrom);
+        .find(({ short }) => short === currencyFrom);
 
     const rate = ratebase[currencyTo];
 
@@ -26,7 +26,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                 amountFrom: +amount,
                 currencyFrom,
                 currencyTo,
-                amountTo: +amount*rate
+                amountTo: +amount * rate
             }
         ));
     };

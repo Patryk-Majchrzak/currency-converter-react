@@ -1,8 +1,8 @@
-const Result = ({result}) => {    
+const Result = ({ result }) => {
 
     const writeResult = () => {
-        if(result) {
-            return(`${result.amountFrom.toFixed(2)} ${result.currencyFrom} to ${result.amountTo.toFixed(2)} ${result.currencyTo}`)
+        if (result) {
+            return (`${result.amountFrom.toFixed(2)} ${result.currencyFrom} to ${result.amountTo.toFixed(2)} ${result.currencyTo}`)
         }
     }
 

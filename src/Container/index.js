@@ -1,6 +1,6 @@
 import "./style.css"
 
-const Container = ({children}) => (
+const Container = ({ children }) => (
     <div className="flexBox">
         <div className="flexBox__container">
             {children}
