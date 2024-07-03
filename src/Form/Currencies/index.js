@@ -6,7 +6,7 @@ const Currencies = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrT
             value={currencyFromOrTo} 
             onChange={changeCurrencyFromOrTo}>
                 {currencies.map(currency => (
-                    <option key={currency.short}>{currency.short}</option>
+                    <option key={currency.id}>{currency.short}</option>
                 ))}
             </select>
         </>
