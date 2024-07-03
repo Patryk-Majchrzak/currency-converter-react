@@ -1,0 +1,95 @@
+.form__fieldset{
+    border-radius: 10px;
+    border:1px solid rgba(0, 0, 0, 0.503);
+}
+
+.form__legend{
+    background-color: rgb(16, 119, 6);
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.document--dark .form__legend{
+    background-color: hsl(0, 0%, 15%);
+}
+
+.form__labelText{
+    width: 80px;
+    display: inline-block;
+}
+
+.form__input{
+    width:100%;
+    max-width: 560px;
+}
+
+.form__select{
+    padding: 3px;
+    border-radius: 10px;
+}
+.form__label {
+    display: inline-block;
+}
+
+.form__select--from{
+    margin-right:30px;
+}
+
+@media(max-width:527px){
+    .form__select--from{
+        margin-bottom:10px;
+    };
+}
+
+@media(max-width:370px){
+    .form__select--from{
+        margin-right: 0;
+    }
+}
+
+.form__button{
+    background-color: hsl(115, 90%, 25%);
+    color:white;
+    padding: 10px;
+    width:100%;
+    border-radius: 10px;
+    transition: background 0.5s, transform 1s;
+}
+
+.form__button:hover{
+    background-color: hsl(115, 79%, 31%);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.form__button:active{
+    background-color: hsl(115, 66%, 43%);
+    color:hsl(0, 0%, 0%);
+}
+
+.document--dark .form__button{
+    background-color: hsl(0, 0%, 15%);
+}
+
+.document--dark .form__button:hover{
+    background-color: hsl(0, 0%, 25%);
+}
+
+.document--dark .form__button:active{
+    background-color: hsl(0, 0%, 35%);
+    color:rgb(200, 221, 142);
+}
+
+.form__paragraph--centered{
+    text-align:center;
+}
+
+.form__paragraph--result{
+    color: rgb(36, 112, 69);
+    font-size: 20px;
+}
+
+.document--dark .form__paragraph--result{
+    color: rgb(52, 9, 59)
+}
