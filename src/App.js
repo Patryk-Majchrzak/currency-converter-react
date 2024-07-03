@@ -1,4 +1,25 @@
+import { useState } from "react";
+import Currencies from "./Currencies";
+
+
+const currencies =
+  [ 
+    { short: "PLN" },
+    { short: "EUR" },
+    { short: "GBP" },
+    { short: "USD" },
+  ];
+
 function App() {
+
+  const [currencyTo, setCurrencyTo] = useState(currencies[1].short);
+
+  const changeCurrencyTo = ({target}) => setCurrencyTo(target.value);
+
+  const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
+
+  const changeCurrencyFrom = ({target}) => setCurrencyFrom(target.value);
+
   return (
     <>
       <button className="document__button">Włącz ciemny motyw</button>
@@ -11,27 +32,26 @@ function App() {
                 <p>
                   <label>
                     <span className="form__labelText">Kwota</span>
-                    <input type="number" step="0.01" min="0.01" className="form__input js-amount" required />
+                    <input type="number" step="0.01" min="0.01" className="form__input" required />
                   </label>
                 </p>
                 <p>
                   <label className="form__label">
-                    <span className="form__labelText">Zamień z</span>
-                    <select className="form__select form__select--from js-currencyFrom">
-                      <option className="form__option">PLN</option>
-                      <option className="form__option">EUR</option>
-                      <option className="form__option">GBP</option>
-                      <option className="form__option">USD</option>
-                    </select>
+                  <Currencies 
+                      title="Zamień z" 
+                      currencies={currencies}
+                      currencyFromOrTo={currencyFrom}
+                      changeCurrencyFromOrTo={changeCurrencyFrom} 
+                      additionalClass="form__select--from"
+                    />
                   </label>
                   <label className="form__label">
-                    <span className="form__labelText">Zamień na</span>
-                    <select className="form__select js-currencyTo">
-                      <option className="form__option">PLN</option>
-                      <option className="form__option" selected>EUR</option>
-                      <option className="form__option">GBP</option>
-                      <option className="form__option">USD</option>
-                    </select>
+                    <Currencies 
+                      title="Zamień na" 
+                      currencies={currencies}
+                      currencyFromOrTo={currencyTo}
+                      changeCurrencyFromOrTo={changeCurrencyTo} 
+                    />
                   </label>
                 </p>
               </fieldset>
