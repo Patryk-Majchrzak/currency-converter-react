@@ -1,34 +1,51 @@
 import "./style.css"
+import { useState } from "react";
 import Currencies from "./Currencies"
 import Result from "./Result";
-import { useState } from "react";
 
-const Form = () => {
+const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
+    const [amount, setAmount] = useState("");
+    const changeAmount = ({ target }) => setAmount(target.value);
 
-    const currencies =
-        [
-            { short: "PLN" },
-            { short: "EUR" },
-            { short: "GBP" },
-            { short: "USD" },
-        ];
+    const [result, setResult] = useState("");
 
-    const [currencyTo, setCurrencyTo] = useState(currencies[1].short);
+    const ratebase = currencies
+        .find(({short}) => short === currencyFrom)
 
-    const changeCurrencyTo = ({ target }) => setCurrencyTo(target.value);
+    const rate = ratebase[currencyTo]
 
-    const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        calculateResult();
+    };
 
-    const changeCurrencyFrom = ({ target }) => setCurrencyFrom(target.value);
+    const calculateResult = () => {
+        return (setResult(
+            {
+                amountFrom: +amount,
+                currencyFrom,
+                currencyTo,
+                amountTo: +amount*rate
+            }
+        ));
+    };
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={onFormSubmit}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator walut</legend>
                 <p>
                     <label>
                         <span className="form__labelText">Kwota</span>
-                        <input type="number" step="0.01" min="0.01" className="form__input" required />
+                        <input
+                            type="number"
+                            step="0.01"
+                            min="0.01"
+                            className="form__input"
+                            required
+                            value={amount}
+                            onChange={changeAmount}
+                        />
                     </label>
                 </p>
                 <p>
@@ -51,10 +68,7 @@ const Form = () => {
                     </label>
                 </p>
             </fieldset>
-            <Result />
-            <p>
-                <button className="form__button">Przelicz</button>
-            </p>
+            <Result result={result} />
             <p className="form__paragraph form__paragraph--centered">
                 Dane liczone wg kursów z dnia 21.06.2024
             </p>
