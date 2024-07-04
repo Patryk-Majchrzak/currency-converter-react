@@ -24,7 +24,7 @@ function App() {
   const [darkDocumentMotive, setDarkDocumentMotive] = useState("")
 
   const changeDocumentMotive = () => {
-    if(darkDocumentMotive==="") {
+    if(!darkDocumentMotive) {
       setDarkDocumentMotive("document--dark")
     } else {
       setDarkDocumentMotive("")
