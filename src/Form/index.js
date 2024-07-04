@@ -13,7 +13,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
     const ratebase = currencies
         .find(({ short }) => short === currencyFrom);
 
-    const rate = ratebase[currencyTo];
+    const rate = ratebase[`rateTo${currencyTo}`];
 
     const onFormSubmit = (event) => {
         event.preventDefault();
