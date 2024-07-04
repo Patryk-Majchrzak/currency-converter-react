@@ -1,8 +1,11 @@
 const Result = ({ result }) => {
 
-    const writeResult = () => {
+    const writeResult = (result) => {
         if (result) {
-            return (`${result.amountFrom.toFixed(2)} ${result.currencyFrom} to ${result.amountTo.toFixed(2)} ${result.currencyTo}`)
+            const formattedAmountFrom = result.amountFrom.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, " ");
+            const formattedAmountTo =  result.amountTo.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, " ");
+
+            return (`${formattedAmountFrom} ${result.currencyFrom} to ${formattedAmountTo} ${result.currencyTo}`)
         }
     }
 
