@@ -21,9 +21,19 @@ function App() {
 
   const changeCurrencyTo = ({ target }) => setCurrencyTo(target.value);
 
+  const [darkDocumentMotive, setDarkDocumentMotive] = useState("")
+
+  const changeDocumentMotive = () => {
+    if(darkDocumentMotive==="") {
+      setDarkDocumentMotive("document--dark")
+    } else {
+      setDarkDocumentMotive("")
+    }
+  }
+
   return (
-    <Document>
-      <button className="document__button">Włącz ciemny motyw</button>
+    <Document darkDocumentMotive={darkDocumentMotive}>
+      <button className="document__button" onClick={changeDocumentMotive}>Włącz ciemny motyw</button>
       <Container>
         <Form
           currencies={currencies}
