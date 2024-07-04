@@ -70,6 +70,11 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                 </p>
             </fieldset>
             <Result result={result} />
+            <p>
+                <button className="form__button">
+                    Przelicz
+                </button>
+            </p>
             <p className="form__paragraph form__paragraph--centered">
                 Dane liczone wg kursów z dnia 21.06.2024
             </p>
