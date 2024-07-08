@@ -2,7 +2,7 @@ import { useState } from "react";
 import Document from "../Document";
 import Container from "../Container";
 import Form from "../Form";
-import { currencies } from "./Currencies";
+import { currencies } from "./currencies";  
 
 function App() {
 
