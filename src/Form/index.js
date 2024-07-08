@@ -1,7 +1,7 @@
 import "./style.css"
 import { useState } from "react";
-import Currencies from "./Currencies"
 import Result from "./Result";
+import CurrenciesSelect from "./CurrenciesSelect";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
     const [amount, setAmount] = useState("");
@@ -13,22 +13,20 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
     const ratebase = currencies
         .find(({ short }) => short === currencyFrom);
 
-    const rate = ratebase[`rateTo${currencyTo}`];
-
+    const rate = ratebase[`rateTo${currencyTo}`]===undefined ? 1 : ratebase[`rateTo${currencyTo}`];
+    
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculateResult();
     };
 
     const calculateResult = () => {
-        return (setResult(
-            {
+        return (setResult({
                 amountFrom: +amount,
                 currencyFrom,
                 currencyTo,
                 amountTo: +amount * rate
-            }
-        ));
+            }));
     };
 
     return (
@@ -51,7 +49,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                 </p>
                 <p>
                     <label className="form__label">
-                        <Currencies
+                        <CurrenciesSelect
                             title="Zamień z"
                             currencies={currencies}
                             currencyFromOrTo={currencyFrom}
@@ -60,7 +58,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                         />
                     </label>
                     <label className="form__label">
-                        <Currencies
+                        <CurrenciesSelect
                             title="Zamień na"
                             currencies={currencies}
                             currencyFromOrTo={currencyTo}

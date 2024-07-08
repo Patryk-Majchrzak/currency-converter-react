@@ -1,4 +1,4 @@
-const Currencies = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrTo, additionalClass }) => (
+const CurrenciesSelect = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrTo, additionalClass }) => (
     <>
         <span className="form__labelText">{title}</span>
         <select
@@ -14,4 +14,4 @@ const Currencies = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrT
     </>
 );
 
-export default Currencies;
+export default CurrenciesSelect;
