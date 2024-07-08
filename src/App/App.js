@@ -26,7 +26,7 @@ function App() {
 
   return (
     <Document darkDocumentMotive={darkDocumentMotive}>
-      <button className="document__button" onClick={changeDocumentMotive}>Włącz ciemny motyw</button>
+      <button className="document__button" onClick={changeDocumentMotive}>Włącz {darkDocumentMotive==="" ? "ciemny" :"jasny"} motyw</button>
       <Container>
         <Form
           currencies={currencies}
