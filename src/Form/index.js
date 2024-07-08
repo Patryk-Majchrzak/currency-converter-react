@@ -14,10 +14,13 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
         .find(({ short }) => short === currencyFrom);
 
     const rate = ratebase[`rateTo${currencyTo}`]===undefined ? 1 : ratebase[`rateTo${currencyTo}`];
-    
+
+    const resetAmount = () => (setAmount(amount => amount=""))
+
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculateResult();
+        resetAmount();
     };
 
     const calculateResult = () => {
