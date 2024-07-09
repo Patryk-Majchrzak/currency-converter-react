@@ -28,10 +28,9 @@ const Clock = () => {
                     minute: "numeric",
                     second: "numeric"
                 }
-            )}`
-            }
+            )}`}
         </p>
-    )
+    );
 };
 
 export default Clock
