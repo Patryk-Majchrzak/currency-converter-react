@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Document from "../Document";
-import Container from "../Container";
+import Container from "../Document/Container";
+import Clock from "../Clock";
 import Form from "../Form";
 import { currencies } from "./currencies";  
 
@@ -28,6 +29,7 @@ function App() {
     <Document darkDocumentMotive={darkDocumentMotive}>
       <button className="document__button" onClick={changeDocumentMotive}>Włącz {darkDocumentMotive==="" ? "ciemny" :"jasny"} motyw</button>
       <Container>
+        <Clock />
         <Form
           currencies={currencies}
           currencyFrom={currencyFrom}
