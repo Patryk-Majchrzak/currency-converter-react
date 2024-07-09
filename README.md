@@ -27,6 +27,8 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 1. For naming classes for HTML mark-ups I've used BEM convention for any class I was using in CSS.
 2. Hooks used: 
 - useState
+- useEffect
+3. For setting the tim I combined useEffect, setIntervaal & clearInterval to create Interval that will show you dat with clock updating every second if Clock component exists and if not Interval will be immidiately cleared. This way unused intervals are cleared and code can be more efficient.
 
 ## Available Scripts
 
