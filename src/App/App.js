@@ -3,9 +3,12 @@ import Document from "../Document";
 import Container from "../Document/Container";
 import Clock from "../Clock";
 import Form from "../Form";
-import { currencies } from "./currencies";  
+import { currencies } from "./currencies";
+import { welcome } from "../utils/welcome";  
 
 function App() {
+
+  welcome();
 
   const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
 
