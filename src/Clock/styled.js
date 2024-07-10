@@ -5,6 +5,6 @@ export const ClockArea = styled.p`
     justify-content: flex-end;
     font-family: monospace;
     font-size: 14px;
-    color: rgb(109, 101, 101);
+    color: ${({theme}) => theme.colors.fontGrey};
     margin-top:0
 `

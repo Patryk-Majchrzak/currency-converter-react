@@ -1,4 +1,3 @@
-import "./style.css"
 import { FlexBox } from "./styled";
 import { FlexBoxContainer } from "./styled";
 

@@ -10,10 +10,10 @@ export const FlexBox = styled.div`
 export const FlexBoxContainer = styled.div`
     flex-basis:800px;
     padding: 50px;
-    background-color: rgb(251, 251, 251);
+    background-color: ${({theme}) => theme.colors.containerColor};
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 5px -5px 23px 12px #1b6323;
+    box-shadow: ${({theme}) => theme.boxShadows.container};
 
     @media(max-width:992px){
         max-width: 95%;

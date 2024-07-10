@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 export const Fieldset = styled.fieldset`
-        border-radius: 10px;
-        border:1px solid rgba(0, 0, 0, 0.503);
+    border-radius: 10px;
+    border:1px solid ${({theme}) => theme.colors.borderFieldset};
 `
 
 export const Legend = styled.legend`
-    background-color: rgb(16, 119, 6);
+    background-color: ${({theme}) => theme.colors.basic};
     padding: 10px;
-    color: white;
+    color: ${({theme}) => theme.colors.fontWhite};
     border-radius: 10px;
 `
 
@@ -29,7 +29,7 @@ export const CurrenciesLabel = styled.label`
 `
 
 export const CalculateButton = styled.button` 
-    background-color: hsl(115, 90%, 25%);
+    background-color: ${({theme}) => theme.colors.basic};
     color:white;
     padding: 10px;
     width:100%;
@@ -37,14 +37,14 @@ export const CalculateButton = styled.button`
     transition: background 0.5s, transform 1s;
 
     &:hover{
-        background-color: hsl(115, 79%, 31%);
+        background-color: ${({theme}) => theme.colors.basicHover};
         cursor: pointer;
         transform: scale(1.05);
     }
 
     &:active{
-        background-color: hsl(115, 66%, 43%);
-        color:hsl(0, 0%, 0%);
+        background-color: ${({theme}) => theme.colors.basicActive};
+        color: ${({theme}) => theme.colors.black};
     }
 `
 

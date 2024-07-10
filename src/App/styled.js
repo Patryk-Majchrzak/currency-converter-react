@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const BackgroundButton = styled.button`
-    background-color: hsl(115, 90%, 20%);
-    color:white;
+    background-color: ${({theme}) => theme.colors.basic};
+    color: ${({theme}) => theme.colors.fontWhite};
     padding: 10px;
     border-radius: 10px;
     margin: 30px 50px;
@@ -11,11 +11,11 @@ export const BackgroundButton = styled.button`
     &:hover{
         cursor: pointer;
         transform: scale(1.1);
-        background-color: hsl(115, 90%, 25%);
+        background-color: ${({theme}) => theme.colors.basicHover};
     }
     
     &:active{
         transform: scale(1.1);
-        background-color: hsl(115, 90%, 30%);
+        background-color: ${({theme}) => theme.colors.basicActive};
     }
 `

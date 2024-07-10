@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ResultParagraph = styled.p`
-    color: rgb(36, 112, 69);
+    color: ${({theme}) => theme.colors.basic};
     font-size: 20px;
     display: grid;
     grid-template-columns: auto 1fr;    

@@ -7,11 +7,11 @@ export const Select = styled.select`
     ${({from}) => from && css`
         margin-right:30px;
     
-        @media(max-width:527px){
+        @media(max-width:${({theme}) => theme.breakpoints.small}px){
             margin-bottom:10px;
         }
 
-        @media(max-width:370px){
+        @media(max-width:${({theme}) => theme.breakpoints.extraSmall}px){
             margin-right: 0;
         }
     `}
