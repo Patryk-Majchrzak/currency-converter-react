@@ -1,5 +1,4 @@
-import { CenteredParagraph } from "../styled";
-import { ResultParagraph } from "./styled";
+import { ResultParagraph, CenteredDiv } from "./styled";
 
 const Result = ({ result }) => {
     if (result) {
@@ -7,16 +6,16 @@ const Result = ({ result }) => {
         const formattedAmountTo = result.amountTo.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
         return (
-                <ResultParagraph>
+                <ResultContainer>
                     <div>Wynik:</div>
-                    <CenteredParagraph as="div">
+                    <CenteredDiv>
                         <strong>
                             {formattedAmountFrom}&nbsp;{result.currencyFrom}&nbsp;to
                             {" "}
                             {formattedAmountTo}&nbsp;{result.currencyTo}
                         </strong>
-                    </CenteredParagraph>
-                </ResultParagraph>
+                    </CenteredDiv>
+                </ResultContainer>
         )
     } else {
         return <ResultParagraph>Wynik:</ResultParagraph>
