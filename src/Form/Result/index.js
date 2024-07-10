@@ -1,4 +1,4 @@
-import { ResultParagraph, CenteredDiv } from "./styled";
+import { ResultContainer, CenteredDiv } from "./styled";
 
 const Result = ({ result }) => {
     if (result) {
@@ -18,7 +18,7 @@ const Result = ({ result }) => {
                 </ResultContainer>
         )
     } else {
-        return <ResultParagraph>Wynik:</ResultParagraph>
+        return <ResultContainer>Wynik:</ResultContainer>
     }
 }
 
