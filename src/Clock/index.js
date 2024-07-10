@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./style.css"
+import { ClockArea } from "./styled";
 
 const Clock = () => {
 
@@ -16,7 +16,7 @@ const Clock = () => {
     }, []);
 
     return(
- <p className="clockArea">
+ <ClockArea>
             {`Dzisiaj jest ${currentDate.toLocaleString(
                 undefined,
                 {
@@ -29,7 +29,7 @@ const Clock = () => {
                     second: "numeric"
                 }
             )}`}
-        </p>
+        </ClockArea>
     );
 };
 
