@@ -5,11 +5,13 @@ import Clock from "../Clock";
 import Form from "../Form";
 import { currencies } from "./currencies";
 import { welcome } from "../utils/welcome";
-import { BackgroundButton } from "./styled";  
+import { BackgroundButton } from "./styled";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "../themes";
+
+welcome();
 
 function App() {
-
-  welcome();
 
   const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
 
@@ -22,27 +24,31 @@ function App() {
   const [darkDocumentMotive, setDarkDocumentMotive] = useState("")
 
   const changeDocumentMotive = () => {
-    if(!darkDocumentMotive) {
-      setDarkDocumentMotive("document--dark")
+    if (!darkDocumentMotive) {
+      setDarkDocumentMotive("dark")
     } else {
       setDarkDocumentMotive("")
     }
   }
 
+  const theme = darkDocumentMotive==="dark" ? darkTheme : lightTheme;
+
   return (
-    <Document darkDocumentMotive={darkDocumentMotive}>
-      <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" :"jasny"} motyw</BackgroundButton>
-      <Container>
-        <Clock />
-        <Form
-          currencies={currencies}
-          currencyFrom={currencyFrom}
-          changeCurrencyFrom={changeCurrencyFrom}
-          currencyTo={currencyTo}
-          changeCurrencyTo={changeCurrencyTo}
-        />
-      </Container>
-    </Document>
+    <ThemeProvider theme={theme}>
+      <Document darkDocumentMotive={darkDocumentMotive}>
+        <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
+        <Container>
+          <Clock />
+          <Form
+            currencies={currencies}
+            currencyFrom={currencyFrom}
+            changeCurrencyFrom={changeCurrencyFrom}
+            currencyTo={currencyTo}
+            changeCurrencyTo={changeCurrencyTo}
+          />
+        </Container>
+      </Document>
+    </ThemeProvider>
   );
 }
 
