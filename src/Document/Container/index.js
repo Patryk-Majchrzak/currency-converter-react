@@ -1,11 +1,13 @@
 import "./style.css"
+import { FlexBox } from "./styled";
+import { FlexBoxContainer } from "./styled";
 
 const Container = ({ children }) => (
-    <div className="flexBox">
-        <div className="flexBox__container">
+    <FlexBox>
+        <FlexBoxContainer>
             {children}
-        </div>
-    </div>
+        </FlexBoxContainer>
+    </FlexBox>
 );
 
 export default Container;

@@ -1,9 +1,10 @@
 import "./style.css"
+import { Main } from "./styled";
 
-const Document = ({ children, darkDocumentMotive }) => (
-    <main className={`document ${darkDocumentMotive}`}>
+const Document = ({ children }) => (
+    <Main>
         {children}
-    </main>
+    </Main>
 );
 
 export default Document;
