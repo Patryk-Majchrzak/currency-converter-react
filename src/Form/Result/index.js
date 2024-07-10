@@ -1,22 +1,25 @@
+import { CenteredParagraph } from "../styled";
+import { ResultParagraph } from "./styled";
+
 const Result = ({ result }) => {
     if (result) {
         const formattedAmountFrom = result.amountFrom.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
         const formattedAmountTo = result.amountTo.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
         return (
-                <p className="form__paragraph form__paragraph--result">
+                <ResultParagraph>
                     <div>Wynik:</div>
-                    <div className="form__paragraph--centered">
+                    <CenteredParagraph as="div">
                         <strong>
                             {formattedAmountFrom}&nbsp;{result.currencyFrom}&nbsp;to
                             {" "}
                             {formattedAmountTo}&nbsp;{result.currencyTo}
                         </strong>
-                    </div>
-                </p>
+                    </CenteredParagraph>
+                </ResultParagraph>
         )
     } else {
-        return <p className="form__paragraph form__paragraph--result">Wynik:</p>
+        return <ResultParagraph>Wynik:</ResultParagraph>
     }
 }
 

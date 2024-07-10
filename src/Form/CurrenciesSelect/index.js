@@ -1,8 +1,11 @@
-const CurrenciesSelect = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrTo, additionalClass }) => (
+import { LabelText } from "../styled";
+import { Select } from "./styled";
+
+const CurrenciesSelect = ({ title, currencies, currencyFromOrTo, changeCurrencyFromOrTo, additionalAttribute }) => (
     <>
-        <span className="form__labelText">{title}</span>
-        <select
-            className={`form__select ${additionalClass}`}
+        <LabelText>{title}</LabelText>
+        <Select
+            from={additionalAttribute}
             value={currencyFromOrTo}
             onChange={changeCurrencyFromOrTo}>
             {currencies.map(currency => (
@@ -10,7 +13,7 @@ const CurrenciesSelect = ({ title, currencies, currencyFromOrTo, changeCurrencyF
                     {currency.short}
                 </option>
             ))}
-        </select>
+        </Select>
     </>
 );
 
