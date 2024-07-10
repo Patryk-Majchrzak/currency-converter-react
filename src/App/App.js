@@ -4,7 +4,8 @@ import Container from "../Document/Container";
 import Clock from "../Clock";
 import Form from "../Form";
 import { currencies } from "./currencies";
-import { welcome } from "../utils/welcome";  
+import { welcome } from "../utils/welcome";
+import { BackgroundButton } from "./styled";  
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <Document darkDocumentMotive={darkDocumentMotive}>
-      <button className="document__button" onClick={changeDocumentMotive}>Włącz {darkDocumentMotive==="" ? "ciemny" :"jasny"} motyw</button>
+      <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" :"jasny"} motyw</BackgroundButton>
       <Container>
         <Clock />
         <Form
