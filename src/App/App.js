@@ -7,7 +7,7 @@ import { currencies } from "./currencies";
 import { welcome } from "../utils/welcome";
 import { BackgroundButton } from "./styled";
 import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../themes";
+import { useThemeSelection } from "../useThemeSelection";
 
 welcome();
 
@@ -21,17 +21,11 @@ function App() {
 
   const changeCurrencyTo = ({ target }) => setCurrencyTo(target.value);
 
-  const [darkDocumentMotive, setDarkDocumentMotive] = useState("")
-
-  const changeDocumentMotive = () => {
-    if (!darkDocumentMotive) {
-      setDarkDocumentMotive("dark")
-    } else {
-      setDarkDocumentMotive("")
-    }
-  }
-
-  const theme = darkDocumentMotive==="dark" ? darkTheme : lightTheme;
+  const {
+    theme,
+    darkDocumentMotive,
+    changeDocumentMotive,
+  } = useThemeSelection()
 
   return (
     <ThemeProvider theme={theme}>
