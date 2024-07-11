@@ -27,13 +27,14 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 1. All components have been styled with styled-component library from NPM.
 2. Whole app is put in ThemeProvider with appropiate themes for colors, box-shadows and breakpoints for max-width establishhed
 3. Theme has some elements that are different for dark motive and some for light motive. Ones that are shared have been put in baseTheme object and copied to light and darkTheme
-4. Hooks used: 
+4. App has alternative box model defined in GlobalStyle
+5. Hooks used: 
 - useState
 - useEffect
 - custom hooks:
     - useCurrentDate
     - useThemeSelector
-5. For setting the tim I combined useEffect, setIntervaal & clearInterval to create Interval that will show you dat with clock updating every second if Clock component exists and if not Interval will be immidiately cleared. This way unused intervals are cleared and code can be more efficient.
+6. For setting the tim I combined useEffect, setIntervaal & clearInterval to create Interval that will show you dat with clock updating every second if Clock component exists and if not Interval will be immidiately cleared. This way unused intervals are cleared and code can be more efficient.
 
 ## Available Scripts
 
