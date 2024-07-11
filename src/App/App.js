@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Document from "../Document";
-import Container from "../Document/Container";
+import Container from "../Container";
 import Clock from "../Clock";
 import Form from "../Form";
 import { currencies } from "./currencies";
 import { welcome } from "../utils/welcome";
-import { BackgroundButton } from "./styled";
+import { BackgroundButton, Main } from "./styled";
 import { ThemeProvider } from "styled-components";
 import { useThemeSelection } from "../useThemeSelection";
 
@@ -29,7 +28,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Document darkDocumentMotive={darkDocumentMotive}>
+      <Main darkDocumentMotive={darkDocumentMotive}>
         <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
         <Container>
           <Clock />
@@ -41,7 +40,7 @@ function App() {
             changeCurrencyTo={changeCurrencyTo}
           />
         </Container>
-      </Document>
+      </Main>
     </ThemeProvider>
   );
 }
