@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCurrentDate } from "./useCurrentDate";
 import { ClockArea } from "./styled";
 
 const Clock = () => {
 
-    const [currentDate, setCurrentDate] = useState(new Date());
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentDate(new Date())
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId)
-        };
-    }, []);
+    const currentDate = useCurrentDate()
 
     return(
  <ClockArea>
