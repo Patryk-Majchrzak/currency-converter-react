@@ -1,4 +1,4 @@
-import styled, { ThemeContext } from "styled-components";
+import styled from "styled-components";
 
 export const Fieldset = styled.fieldset`
     border-radius: 10px;
