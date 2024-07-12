@@ -1,19 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
+import { useGetDataFromAPI } from "../useGetDataFromAPI";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
     const [amount, setAmount] = useState("");
 
+    const [rate, setRate] = useState(1)
+
+    const [date, setDate] = useState("")
+
     const changeAmount = ({ target }) => setAmount(target.value);
+
+    const rateAndDateBase = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/pair/${currencyFrom}/${currencyTo}`);
 
     const [result, setResult] = useState("");
 
-    const ratebase = currencies
-        .find(({ short }) => short === currencyFrom);
+    useEffect(() => {
+        if (rateAndDateBase) {
+            setRate(currencyTo === currencyFrom ? 1: rateAndDateBase.conversion_rate);
+            setDate(rateAndDateBase.time_last_update_utc)
+        }
+    }, [rateAndDateBase, currencyTo])
 
-    const rate = ratebase[`rateTo${currencyTo}`]===undefined ? 1 : ratebase[`rateTo${currencyTo}`];
+    const formatDate = (date) => {
+        return new Date(date).toLocaleString(
+            undefined,
+            {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+            }
+        )
+    }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -22,11 +45,11 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
 
     const calculateResult = () => {
         return (setResult({
-                amountFrom: +amount,
-                currencyFrom,
-                currencyTo,
-                amountTo: +amount * rate
-            }));
+            amountFrom: +amount,
+            currencyFrom,
+            currencyTo,
+            amountTo: +amount * rate
+        }));
     };
 
     return (
@@ -74,7 +97,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
             </p>
             <Result result={result} />
             <CenteredParagraph>
-                Dane liczone wg kursów z dnia 21.06.2024
+                Dane liczone wg kursów z dnia {formatDate(date)}
             </CenteredParagraph>
         </form>
     );
