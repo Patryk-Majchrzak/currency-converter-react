@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "../Container";
 import Clock from "../Clock";
 import Form from "../Form";
-import { currencies } from "./currencies";
 import { welcome } from "../utils/welcome";
 import { BackgroundButton, Main } from "./styled";
 import { ThemeProvider } from "styled-components";
 import { useThemeSelection } from "../useThemeSelection";
+import { useGetDataFromAPI } from "../useGetDataFromAPI";
 
 welcome();
 
 function App() {
+  const [currencyFrom, setCurrencyFrom] = useState("PLN");
 
-  const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
+  const [currencyTo, setCurrencyTo] = useState("EUR");
+
+  const [currencies, setCurrencies] = useState([]);
+
+  const currenciesBase = useGetDataFromAPI("https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/codes");
+
+  useEffect(() => {
+    if (currenciesBase) {
+      const currenciesSelect = (currenciesBase.supported_codes)
+      setCurrencies(currenciesSelect);
+    }
+  }, [currenciesBase]);
 
   const changeCurrencyFrom = ({ target }) => setCurrencyFrom(target.value);
-
-  const [currencyTo, setCurrencyTo] = useState(currencies[1].short);
 
   const changeCurrencyTo = ({ target }) => setCurrencyTo(target.value);
 
@@ -28,7 +38,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Main darkDocumentMotive={darkDocumentMotive}>
+      <Main $darkDocumentMotive={darkDocumentMotive}>
         <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
         <Container>
           <Clock />
