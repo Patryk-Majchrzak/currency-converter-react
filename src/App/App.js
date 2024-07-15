@@ -18,11 +18,9 @@ function App() {
   const [currencies, setCurrencies] = useState([]);
 
   const statusAPICurrencies = useGetDataFromAPI("https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/codes").status
-  const statusAPIRateAndDate = useGetDataFromAPI("https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/codes").status
 
   const currenciesBaseData = useGetDataFromAPI("https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/codes").data;
-  const rateAndDateBaseData = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/pair/${currencyFrom}/${currencyTo}`).data;
-
+  
   useEffect(() => {
     if (currenciesBaseData) {
       const currenciesSelect = (currenciesBaseData.supported_codes)
@@ -46,7 +44,7 @@ function App() {
         <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
         <Container>
           <Clock />
-          {statusAPICurrencies === "loading" || statusAPIRateAndDate === "loading"
+          {statusAPICurrencies === "loading"
             ? (
               <LoadingContainer>
                 <Loading>
@@ -56,7 +54,7 @@ function App() {
               </LoadingContainer>
             )
             :
-            statusAPICurrencies ==="error" || statusAPIRateAndDate === "error" ? (
+            statusAPICurrencies ==="error" ? (
               <PotentialError>
                 Coś poszło nie tak, sprawdź połączenie z internetem i spróbuj ponownie później
               </PotentialError>
@@ -68,7 +66,6 @@ function App() {
                   changeCurrencyFrom={changeCurrencyFrom}
                   currencyTo={currencyTo}
                   changeCurrencyTo={changeCurrencyTo}
-                  rateAndDateBaseData={rateAndDateBaseData}
                 />
               )
           }
