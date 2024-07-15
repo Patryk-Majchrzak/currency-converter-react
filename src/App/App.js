@@ -46,7 +46,7 @@ function App() {
         <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
         <Container>
           <Clock />
-          {statusAPICurrencies || statusAPIRateAndDate === "loading"
+          {statusAPICurrencies === "loading" || statusAPIRateAndDate === "loading"
             ? (
               <LoadingContainer>
                 <Loading>
@@ -56,7 +56,7 @@ function App() {
               </LoadingContainer>
             )
             :
-            statusAPICurrencies || statusAPIRateAndDate === "error" ? (
+            statusAPICurrencies ==="error" || statusAPIRateAndDate === "error" ? (
               <PotentialError>
                 Coś poszło nie tak, sprawdź połączenie z internetem i spróbuj ponownie później
               </PotentialError>
