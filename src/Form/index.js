@@ -19,7 +19,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
             setRate(currencyTo === currencyFrom ? 1: rateAndDateBaseData.conversion_rate);
             setDate(rateAndDateBaseData.time_last_update_utc)
         }
-    }, [rateAndDateBaseData, currencyTo])
+    }, [rateAndDateBaseData, currencyTo, currencyFrom])
 
     const formatDate = (date) => {
         return new Date(date).toLocaleString(
