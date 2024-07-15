@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
-import { useGetDataFromAPI } from "../useGetDataFromAPI";
 
-const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
+const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo, rateAndDateBaseData }) => {
     const [amount, setAmount] = useState("");
 
     const [rate, setRate] = useState(1)
@@ -13,16 +12,14 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
 
     const changeAmount = ({ target }) => setAmount(target.value);
 
-    const rateAndDateBase = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/pair/${currencyFrom}/${currencyTo}`);
-
     const [result, setResult] = useState("");
 
     useEffect(() => {
-        if (rateAndDateBase) {
-            setRate(currencyTo === currencyFrom ? 1: rateAndDateBase.conversion_rate);
-            setDate(rateAndDateBase.time_last_update_utc)
+        if (rateAndDateBaseData) {
+            setRate(currencyTo === currencyFrom ? 1: rateAndDateBaseData.conversion_rate);
+            setDate(rateAndDateBaseData.time_last_update_utc)
         }
-    }, [rateAndDateBase, currencyTo])
+    }, [rateAndDateBaseData, currencyTo])
 
     const formatDate = (date) => {
         return new Date(date).toLocaleString(

@@ -30,7 +30,7 @@ export const CurrenciesLabel = styled.label`
 
 export const CalculateButton = styled.button` 
     background-color: ${({theme}) => theme.colors.basic};
-    color:white;
+    color:${({theme}) => theme.colors.fontWhite};
     padding: 10px;
     width:100%;
     border-radius: 10px;
