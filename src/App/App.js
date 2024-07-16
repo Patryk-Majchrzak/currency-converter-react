@@ -23,10 +23,10 @@ function App() {
 
   useEffect(() => {
     if (statusForDataAPI === "success") {
-      const currenciesSelect = (Object.keys(dataAPI.conversion_rates));
+      const currenciesSelect = (Object.keys(dataAPI.conversion_rates).sort());
       setCurrencies(currenciesSelect);
     }
-  }, [dataAPI]);
+  }, [dataAPI, statusForDataAPI]);
 
   const changeCurrencyFrom = ({ target }) => setCurrencyFrom(target.value);
 
