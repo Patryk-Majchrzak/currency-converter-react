@@ -3,6 +3,7 @@ import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
 import { formatDate } from "../utils/formatDate";
+import useResultUpdate from "./useResultUpdate";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo, dataAPI }) => {
 
@@ -14,27 +15,18 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
 
     const changeAmount = ({ target }) => setAmount(target.value);
 
-    const [result, setResult] = useState("");
-
     useEffect(() => {
         if (dataAPI) {
             setRate(currencyTo === currencyFrom ? 1 : dataAPI.conversion_rates[currencyTo]);
-            setDate(dataAPI.time_last_update_utc)    
+            setDate(dataAPI.time_last_update_utc);
         }
     }, [dataAPI, currencyTo, currencyFrom])
 
+    const { result, resultText, writeResult } = useResultUpdate(amount, currencyFrom, currencyTo, rate);
+
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult();
-    };
-
-    const calculateResult = () => {
-        return (setResult({
-            amountFrom: +amount,
-            currencyFrom,
-            currencyTo,
-            amountTo: +amount * rate
-        }));
+        writeResult(result);
     };
 
     return (
@@ -80,7 +72,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                     Przelicz
                 </CalculateButton>
             </p>
-            <Result result={result} />
+            <Result resultText={resultText} />
             <CenteredParagraph>
                 Dane liczone wg kursów z dnia {formatDate(date)}
             </CenteredParagraph>

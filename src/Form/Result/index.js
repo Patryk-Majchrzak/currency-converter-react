@@ -1,25 +1,15 @@
 import { ResultContainer, CenteredDiv } from "./styled";
 
-const Result = ({ result }) => {
-    if (result) {
-        const formattedAmountFrom = result.amountFrom.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-        const formattedAmountTo = result.amountTo.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+const Result = ({ resultText }) => {
 
-        return (
-                <ResultContainer>
-                    <div>Wynik:</div>
-                    <CenteredDiv>
-                        <strong>
-                            {formattedAmountFrom}&nbsp;{result.currencyFrom}&nbsp;to
-                            {" "}
-                            {formattedAmountTo}&nbsp;{result.currencyTo}
-                        </strong>
-                    </CenteredDiv>
-                </ResultContainer>
-        )
-    } else {
-        return <ResultContainer>Wynik:</ResultContainer>
-    }
+    return (
+        <ResultContainer>
+            <div>Wynik:</div>
+            <CenteredDiv>
+                {resultText}
+            </CenteredDiv>
+        </ResultContainer>
+    )
 }
 
 export default Result;
