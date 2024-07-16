@@ -9,8 +9,8 @@ const CurrenciesSelect = ({ title, currencies, currencyFromOrTo, changeCurrencyF
             value={currencyFromOrTo}
             onChange={changeCurrencyFromOrTo}>
             {currencies.map((currency) => (
-                <option key={currency[0]}>
-                    {currency[0]}
+                <option key={currency}>
+                    {currency}
                 </option>
             ))}
         </Select>
