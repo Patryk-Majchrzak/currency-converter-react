@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
+import { formatDate } from "../utils/formatDate";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo, dataAPI }) => {
 
@@ -21,20 +22,6 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
             setDate(dataAPI.time_last_update_utc)    
         }
     }, [dataAPI, currencyTo, currencyFrom])
-
-    const formatDate = (date) => {
-        return new Date(date).toLocaleString(
-            undefined,
-            {
-                day: "numeric",
-                month: "numeric",
-                year: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric",
-            }
-        )
-    }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
