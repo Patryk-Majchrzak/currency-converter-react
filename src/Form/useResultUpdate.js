@@ -6,17 +6,13 @@ const useResultUpdate = (amount, currencyFrom, currencyTo, rate) => {
     const [resultText, setResultText] = useState("");
     
     useEffect(() => {
-        calculateResult()
-    }, [currencyFrom, currencyTo, amount])
-
-    const calculateResult = () => {
-        return (setResult({
+        setResult({
             amountFrom: +amount,
             currencyFrom,
             currencyTo,
             amountTo: +amount * rate
-        }));
-    };
+        })
+    }, [currencyFrom, currencyTo, amount, rate])
 
     const writeResult = (result) => {
         if (result) {
