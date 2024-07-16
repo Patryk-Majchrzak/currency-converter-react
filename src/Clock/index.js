@@ -1,6 +1,5 @@
 import { useCurrentDate } from "./useCurrentDate";
 import { ClockArea } from "./styled";
-import { formatDate } from "../utils/formatDate";
 import { formatClockDate } from "./formatClockDate";
 
 const Clock = () => {
@@ -14,4 +13,4 @@ const Clock = () => {
     );
 };
 
-export default Clock
+export default Clock;
