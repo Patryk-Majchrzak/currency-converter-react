@@ -1,24 +1,15 @@
 import { useCurrentDate } from "./useCurrentDate";
 import { ClockArea } from "./styled";
+import { formatDate } from "../utils/formatDate";
+import { formatClockDate } from "./formatClockDate";
 
 const Clock = () => {
 
     const currentDate = useCurrentDate()
 
-    return(
- <ClockArea>
-            {`Dzisiaj jest ${currentDate.toLocaleString(
-                undefined,
-                {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric"
-                }
-            )}`}
+    return (
+        <ClockArea>
+            {`Dzisiaj jest ${formatClockDate(currentDate)}`}
         </ClockArea>
     );
 };
