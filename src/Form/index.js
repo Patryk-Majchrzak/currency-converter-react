@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
-import { useGetDataFromAPI } from "../useGetDataFromAPI";
 
-const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo }) => {
+const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo, dataAPI }) => {
 
     const [amount, setAmount] = useState("");
 
@@ -14,18 +13,14 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
 
     const changeAmount = ({ target }) => setAmount(target.value);
 
-    const statusAPIRateAndDate = useGetDataFromAPI("https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/codes").status
-
-    const rateAndDateBaseData = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/pair/${currencyFrom}/${currencyTo}`).data;
-
     const [result, setResult] = useState("");
 
     useEffect(() => {
-        if (rateAndDateBaseData) {
-            setRate(currencyTo === currencyFrom ? 1 : rateAndDateBaseData.conversion_rate);
-            setDate(rateAndDateBaseData.time_last_update_utc)
+        if (dataAPI) {
+            setRate(currencyTo === currencyFrom ? 1 : dataAPI.conversion_rates[currencyTo]);
+            setDate(dataAPI.time_last_update_utc)    
         }
-    }, [rateAndDateBaseData, currencyTo, currencyFrom])
+    }, [dataAPI, currencyTo, currencyFrom])
 
     const formatDate = (date) => {
         return new Date(date).toLocaleString(
@@ -95,29 +90,12 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
             </Fieldset>
             <p>
                 <CalculateButton>
-                    {statusAPIRateAndDate === "success"
-                        ?
-                        "Przelicz"
-                        :
-                        statusAPIRateAndDate === "loading"
-                            ?
-                            "Ładowanie"
-                            :
-                            "Unexpected error"}
+                    Przelicz
                 </CalculateButton>
             </p>
             <Result result={result} />
             <CenteredParagraph>
-                Dane liczone wg kursów z dnia
-                {statusAPIRateAndDate === "success"
-                    ?
-                    formatDate(date)
-                    :
-                    statusAPIRateAndDate === "loading"
-                        ?
-                        "Ładowanie"
-                        :
-                        "Unexpected error"}
+                Dane liczone wg kursów z dnia {formatDate(date)}
             </CenteredParagraph>
         </form>
     );
