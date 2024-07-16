@@ -5,7 +5,7 @@ const baseTheme = {
         fontBlack: "hsl(0, 0%, 0%)",
         borderFieldset: "rgba(0, 0, 0, 0.503)",
         containerColor: "rgb(251, 251, 251)",
-        error: "crimson",
+        error: "#6d100b",
         loadingCircleBorder: "#f3f3f3",
         loadingCircleMovingPart: "#3498db",
     },
