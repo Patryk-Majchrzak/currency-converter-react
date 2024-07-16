@@ -12,13 +12,22 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 ## Details for users
 
 1. Website is available only in polish (I am about to add language selection in thee future, so it will be available in english as well)
-2. You can change graphics by clicking "włącz ciemny  motyw" (enable dark motive) button. Button will now say "Włącz jasny motyw" (enable bright motive). If you click once again graphics will go back to default and button label will change once again to "włącz ciemny  motyw" (enable dark motive)
+2. Before main app view will be displayed there will be 2 seconds of loading screen looking like this:
+
+<img src="for_readme/loadingScren.png">
+
+3. If there will be any potential issue with downloading currencies or dates below message will appear
+
+<img src="for_readme/errorScreen.png">
+
+4. You can change graphics by clicking "włącz ciemny  motyw" (enable dark motive) button. Button will now say "Włącz jasny motyw" (enable bright motive). If you click once again graphics will go back to default and button label will change once again to "włącz ciemny  motyw" (enable dark motive)
 
 <img src="for_readme/changeMotiveAnimation.gif">
 
-3. Currently there are four available currencies to chose from: PLN, WUR, USD and GBP
-4. Input "kwota" (amount) has basic validation, it has to be fulfilled, amount has to be higher than 0.00, and it has to be round to 0.01
-5. To use the currency converter just put the amount in "kwota" (amount) input, select currency you want to trade from "zamień z" (exchange from) select and currency you want to receive from "zamień na" (exchange to) select. Then click "przelicz" (calculate) button and message with the result will appear at the bottom.
+5. Currently there are 161 available currencies sorted in alphabetical order
+6. Website is limited up to 1500 uses per month
+7. Input "kwota" (amount) has basic validation, it has to be fulfilled, amount has to be higher than 0.00, and it has to be round to 0.01
+8. To use the currency converter just put the amount in "kwota" (amount) input, select currency you want to trade from "zamień z" (exchange from) select and currency you want to receive from "zamień na" (exchange to) select. Then click "przelicz" (calculate) button and message with the result will appear at the bottom.
 
 <img src="for_readme/calculateResultAnimation.gif">
 
@@ -34,7 +43,12 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 - custom hooks:
     - useCurrentDate
     - useThemeSelector
+    - useGetDataFromAPI
+    - useResultUpdate
 6. For setting the tim I combined useEffect, setIntervaal & clearInterval to create Interval that will show you dat with clock updating every second if Clock component exists and if not Interval will be immidiately cleared. This way unused intervals are cleared and code can be more efficient.
+5. Currencies and rates are downloaded from API (free version up to 1,500 requests)
+6. Before data from API will be fetched, loading screen will appear (I added 2 seconds timeout, so it won't disappear imidiately)
+7. If there will be any error with fetching the data custom error screen with user-friendly format will appesr   
 
 ## Available Scripts
 
