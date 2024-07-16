@@ -17,16 +17,16 @@ function App() {
 
   const [currencies, setCurrencies] = useState([]);
 
-  const statusForDataAPI = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/latest/${currencyFrom}`).status
+  const statusForDataAPI = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/latest/${currencyFrom}`).status;
 
   const dataAPI = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/latest/${currencyFrom}`).data;
 
   useEffect(() => {
-    if (statusForDataAPI === "success") {
+    if (dataAPI) {
       const currenciesSelect = (Object.keys(dataAPI.conversion_rates).sort());
       setCurrencies(currenciesSelect);
     }
-  }, [dataAPI, statusForDataAPI]);
+  }, [dataAPI]);
 
   const changeCurrencyFrom = ({ target }) => setCurrencyFrom(target.value);
 
