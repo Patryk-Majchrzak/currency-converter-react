@@ -34,14 +34,14 @@ function App() {
 
   const {
     theme,
-    darkDocumentMotive,
-    changeDocumentMotive,
+    isDocumentThemeDark,
+    changeDocumentTheme,
   } = useThemeSelection()
 
   return (
     <ThemeProvider theme={theme}>
-      <Main $darkDocumentMotive={darkDocumentMotive}>
-        <BackgroundButton onClick={changeDocumentMotive}>Włącz {!darkDocumentMotive ? "ciemny" : "jasny"} motyw</BackgroundButton>
+      <Main $isDocumentThemeDark={isDocumentThemeDark}>
+        <BackgroundButton onClick={changeDocumentTheme}>Włącz {!isDocumentThemeDark ? "ciemny" : "jasny"} motyw</BackgroundButton>
         <Container>
           <Clock />
           {statusForDataAPI === "loading"

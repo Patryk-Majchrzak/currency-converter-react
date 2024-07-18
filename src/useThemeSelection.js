@@ -2,21 +2,21 @@ import { useState } from "react";
 import { darkTheme, lightTheme } from "./themes";
 
 export const useThemeSelection = () => {
-    const [darkDocumentMotive, setDarkDocumentMotive] = useState("")
+    const [isDocumentThemeDark, setIsDocumentThemeDark] = useState(false)
 
-    const changeDocumentMotive = () => {
-        if (!darkDocumentMotive) {
-            setDarkDocumentMotive("dark")
+    const changeDocumentTheme = () => {
+        if (!isDocumentThemeDark) {
+            setIsDocumentThemeDark(true)
         } else {
-            setDarkDocumentMotive("")
+            setIsDocumentThemeDark(false)
         }
     }
 
-    const theme = darkDocumentMotive === "dark" ? darkTheme : lightTheme;
+    const theme = isDocumentThemeDark === true ? darkTheme : lightTheme;
 
     return{
-        darkDocumentMotive,
+        isDocumentThemeDark,
         theme,
-        changeDocumentMotive
+        changeDocumentTheme,
     }
 }
