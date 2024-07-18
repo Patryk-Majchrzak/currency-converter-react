@@ -22,7 +22,7 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 
 4. You can change graphics by clicking "włącz ciemny  motyw" (enable dark motive) button. Button will now say "Włącz jasny motyw" (enable bright motive). If you click once again graphics will go back to default and button label will change once again to "włącz ciemny  motyw" (enable dark motive)
 
-<img src="for_readme/changeMotiveAnimation.gif">
+<img src="for_readme/changeThemeAnimation.gif">
 
 5. Currently there are 161 available currencies sorted in alphabetical order
 6. Website is limited up to 1500 uses per month
