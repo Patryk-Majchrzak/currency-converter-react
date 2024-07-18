@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useResultUpdate = (amount, currencyFrom, currencyTo, rate, dataAPI) => {
-    try {
+    
         const [result, setResult] = useState("");
         const [resultText, setResultText] = useState("");
         const [isCalculating, setIsCalculating] = useState(false);
@@ -49,8 +49,4 @@ const useResultUpdate = (amount, currencyFrom, currencyTo, rate, dataAPI) => {
         return { result, resultText, LoadCurrencyCalculation }
     }
 
-    catch {
-        return setResult("I am sorry, but I can't calculate this due to unexpected error. Please try again lateer")
-    }
-}
 export default useResultUpdate
