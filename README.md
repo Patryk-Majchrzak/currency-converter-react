@@ -20,7 +20,7 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 
 <img src="for_readme/errorScreen.png">
 
-4. You can change graphics by clicking "włącz ciemny  motyw" (enable dark motive) button. Button will now say "Włącz jasny motyw" (enable bright motive). If you click once again graphics will go back to default and button label will change once again to "włącz ciemny  motyw" (enable dark motive)
+4. You can change graphics by clicking "włącz ciemny  motyw" (enable dark theme) button. Button will now say "Włącz jasny motyw" (enable bright theme). If you click once again graphics will go back to default and button label will change once again to "włącz ciemny  motyw" (enable dark thme)
 
 <img src="for_readme/changeThemeAnimation.gif">
 
@@ -30,6 +30,10 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 8. To use the currency converter just put the amount in "kwota" (amount) input, select currency you want to trade from "zamień z" (exchange from) select and currency you want to receive from "zamień na" (exchange to) select. Then click "przelicz" (calculate) button and message with the result will appear at the bottom.
 
 <img src="for_readme/calculateResultAnimation.gif">
+
+9. When you'll try to echange currencies right after changing currency from, you'll get message "Przelicza" (I calculate) for a second
+
+<img src="for_readme/calculationLoading.gif">
 
 ## Details for developers
 
