@@ -22,11 +22,11 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
         }
     }, [dataAPI, currencyTo, currencyFrom])
 
-    const { result, resultText, writeResult } = useResultUpdate(amount, currencyFrom, currencyTo, rate);
+    const { resultText, calculateResult } = useResultUpdate(amount, currencyFrom, currencyTo, rate, dataAPI);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        writeResult(result);
+        LoadCurrencyCalculation();
     };
 
     return (
