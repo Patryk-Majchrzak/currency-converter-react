@@ -1,5 +1,5 @@
-import axios from "axios"
 import { useEffect, useState } from "react";
+import { sendAxiosRquest } from "./utils/sendAxiosRequest";
 
 export const useGetDataFromAPI = (URL) => {
     const [data, setData] = useState({
@@ -8,8 +8,9 @@ export const useGetDataFromAPI = (URL) => {
 
     useEffect(() => {
         const getData = async () => {
+
             try {
-                const response = await axios.get(URL)
+                const response = await sendAxiosRquest(URL)
                 setData({
                     status: "success",
                     data: response.data
@@ -20,7 +21,13 @@ export const useGetDataFromAPI = (URL) => {
                 })
             }
         }
-        setTimeout(getData, 2000)
+        
+        let timeoutId;
+
+        timeoutId = setTimeout(getData, 2000);
+
+        return() => clearTimeout(timeoutId)
+
     }, [URL])
 
 return data;
