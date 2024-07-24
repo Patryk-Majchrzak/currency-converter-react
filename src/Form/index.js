@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Result from "./Result";
 import CurrenciesSelect from "./CurrenciesSelect";
 import { Fieldset, LabelText, Legend, Input, CurrenciesLabel, CalculateButton, CenteredParagraph } from "./styled";
@@ -6,11 +7,8 @@ import { formatDate } from "../utils/formatDate";
 import useResultUpdate from "./useResultUpdate";
 
 const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, changeCurrencyTo, dataAPI }) => {
-
     const [amount, setAmount] = useState("");
-
     const [rate, setRate] = useState(1)
-
     const [date, setDate] = useState("")
 
     const changeAmount = ({ target }) => setAmount(target.value);
@@ -29,13 +27,15 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
         LoadCurrencyCalculation();
     };
 
+    const [t] = useTranslation("translation")
+
     return (
         <form onSubmit={onFormSubmit}>
             <Fieldset>
-                <Legend>Kalkulator walut</Legend>
+                <Legend>{t("Form.currencyConverter")}</Legend>
                 <p>
                     <label>
-                        <LabelText>Kwota</LabelText>
+                        <LabelText>{t("Form.amount")}</LabelText>
                         <Input
                             type="number"
                             step="0.01"
@@ -50,7 +50,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                 <p>
                     <CurrenciesLabel>
                         <CurrenciesSelect
-                            title="Zamień z"
+                            title={t("Form.exchangeFrom")}
                             currencies={currencies}
                             currencyFromOrTo={currencyFrom}
                             changeCurrencyFromOrTo={changeCurrencyFrom}
@@ -59,7 +59,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                     </CurrenciesLabel>
                     <CurrenciesLabel>
                         <CurrenciesSelect
-                            title="Zamień na"
+                            title={t("Form.exchangeTo")}
                             currencies={currencies}
                             currencyFromOrTo={currencyTo}
                             changeCurrencyFromOrTo={changeCurrencyTo}
@@ -69,12 +69,12 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
             </Fieldset>
             <p>
                 <CalculateButton>
-                    Przelicz
+                    {t("Form.calculationButton")}
                 </CalculateButton>
             </p>
             <Result resultText={resultText} />
             <CenteredParagraph>
-                Dane liczone wg kursów z dnia {formatDate(date)}
+                {t("Form.dataRefresh")} {formatDate(date)}
             </CenteredParagraph>
         </form>
     );

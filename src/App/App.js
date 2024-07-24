@@ -7,6 +7,7 @@ import { BackgroundButton, Main, Loading, PotentialError, Loader, LoadingContain
 import { ThemeProvider } from "styled-components";
 import { useThemeSelection } from "../useThemeSelection";
 import { useGetDataFromAPI } from "../useGetDataFromAPI";
+import { useTranslation } from "react-i18next";
 
 welcome();
 
@@ -20,6 +21,8 @@ function App() {
   const statusForDataAPI = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/latest/${currencyFrom}`).status;
 
   const dataAPI = useGetDataFromAPI(`https://v6.exchangerate-api.com/v6/67a7a303b054e72ce029ec5c/latest/${currencyFrom}`).data;
+
+  const [t] = useTranslation("translation");
 
   useEffect(() => {
     if (dataAPI) {
@@ -41,14 +44,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Main $isDocumentThemeDark={isDocumentThemeDark}>
-        <BackgroundButton onClick={changeDocumentTheme}>Włącz {!isDocumentThemeDark ? "ciemny" : "jasny"} motyw</BackgroundButton>
+        <BackgroundButton onClick={changeDocumentTheme}>{t("App.turnOn")} {!isDocumentThemeDark ? t("App.dark") : t("App.bright")} {t("App.theme")}</BackgroundButton>
         <Container>
           <Clock />
           {statusForDataAPI === "loading"
             ? (
               <LoadingContainer>
                 <Loading>
-                  Ładuję waluty i ich kursy
+                  {t("App.loading")}
                 </Loading>
                 <Loader />
               </LoadingContainer>
@@ -56,7 +59,7 @@ function App() {
             :
             statusForDataAPI ==="error" ? (
               <PotentialError>
-                Coś poszło nie tak, sprawdź połączenie z internetem i spróbuj ponownie później
+                {t("App.error")}
               </PotentialError>
             )
               : (
