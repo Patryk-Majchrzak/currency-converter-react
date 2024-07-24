@@ -1,0 +1,23 @@
+{
+    "App": {
+        "turnOn": "Włącz",
+        "bright": "jasny",
+        "dark": "ciemy",
+        "theme": "motyw",
+        "loading": "Ładuję waluty i ich kursy",
+        "error": "Coś poszło nie tak, sprawdź połączenie z internetem i spróbuj ponownie później"
+    },
+    "Clock": {
+        "todayIs": "Dzisiaj jest "
+    },
+    "Form": {
+        "currencyConverter": "Kalkulator walut",
+        "amount": "Kwota",
+        "placeholder": "Wpisz kwotę",
+        "exchangeFrom": "Zamień z",
+        "exchangeTo": "Zamień na",
+        "calculationButton": "Przelicz",
+        "dataRefresh": "Dane liczone wg kursów z dnia"
+    },
+    "Result": "Wynik"
+}

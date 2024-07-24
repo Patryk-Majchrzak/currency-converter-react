@@ -1,0 +1,23 @@
+{
+    "App": {
+            "turnOn": "Turn on",
+            "bright": "bright",
+            "dark": "dark",
+            "theme": "theme",
+            "loading": "downloading currencies and their rates",
+            "error": "Something went wrong, please try again later"
+        },
+    "Clock": {
+            "todayIs": "Today is " 
+    },
+    "Form": {
+            "currencyConverter": "Currency converter",
+            "amount": "Amount",
+            "placeholder": "Provide me amount",
+            "exchangeFrom": "Exchange from",
+            "exchangeTo": "Exchange to",
+            "calculationButton": "Calculate",
+            "dataRefresh": "Last data refreshment: "
+    },
+    "Result": "Result"
+}
