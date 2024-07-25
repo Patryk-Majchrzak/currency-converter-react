@@ -11,7 +11,10 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 
 ## Details for users
 
-1. Website is available only in polish (I am about to add language selection in thee future, so it will be available in english as well)
+1. Website is available in polish and english. After first visit it will be displayed in polish, however you can change thee language by clicking on th appropiate flag at the top right language select section.
+
+<img src="for_readme/languageSelection.gif">
+
 2. Before main app view will be displayed there will be 2 seconds of loading screen looking like this:
 
 <img src="for_readme/loadingScren.png">
@@ -52,7 +55,8 @@ Hi! Welcome to my currency converter, where you can convert pick currency you wa
 6. For setting the tim I combined useEffect, setIntervaal & clearInterval to create Interval that will show you dat with clock updating every second if Clock component exists and if not Interval will be immidiately cleared. This way unused intervals are cleared and code can be more efficient.
 5. Currencies and rates are downloaded from API (free version up to 1,500 requests)
 6. Before data from API will be fetched, loading screen will appear (I added 2 seconds timeout, so it won't disappear imidiately)
-7. If there will be any error with fetching the data custom error screen with user-friendly format will appesr   
+7. If there will be any error with fetching the data custom error screen with user-friendly format will appear
+8. Libraries i18next and react-i18next used to change website's language
 
 ## Available Scripts
 
