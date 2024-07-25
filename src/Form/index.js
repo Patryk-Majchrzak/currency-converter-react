@@ -43,7 +43,7 @@ const Form = ({ currencies, currencyFrom, changeCurrencyFrom, currencyTo, change
                             required
                             value={amount}
                             onChange={changeAmount}
-                            placeholder="wpisz kwotę"
+                            placeholder={t("Form.placeholder")}
                         />
                     </label>
                 </p>
