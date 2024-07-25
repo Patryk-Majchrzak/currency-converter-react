@@ -29,7 +29,7 @@ const useResultUpdate = (amount, currencyFrom, currencyTo, rate, dataAPI) => {
 
                 return (setResultText(
                     <strong>
-                        {formattedAmountFrom}&nbsp;{result.currencyFrom}&nbsp;to
+                        {formattedAmountFrom}&nbsp;{result.currencyFrom}&nbsp;=
                         {" "}
                         {formattedAmountTo}&nbsp;{result.currencyTo}
                     </strong>
