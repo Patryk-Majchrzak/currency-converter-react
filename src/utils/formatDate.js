@@ -1,6 +1,8 @@
 export const formatDate = (date) => {
+    const language = document.documentElement.lang
+
     return new Date(date).toLocaleString(
-        undefined,
+        language,
         {
             day: "numeric",
             month: "numeric",

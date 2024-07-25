@@ -1,6 +1,8 @@
 export const formatClockDate = (date) => {
+    const language = document.documentElement.lang;
+    
     return new Date(date).toLocaleString(
-        undefined,
+        language,
         {
             weekday: "long",
             day: "numeric",
