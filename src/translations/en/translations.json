@@ -13,9 +13,9 @@
     "Form": {
             "currencyConverter": "Currency converter",
             "amount": "Amount",
-            "placeholder": "Provide me amount",
-            "exchangeFrom": "Exchange from",
-            "exchangeTo": "Exchange to",
+            "placeholder": "Provide amount",
+            "exchangeFrom": "From",
+            "exchangeTo": "To",
             "calculationButton": "Calculate",
             "dataRefresh": "Last data refreshment: "
     },
