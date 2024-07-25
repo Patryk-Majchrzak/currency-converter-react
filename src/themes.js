@@ -8,6 +8,7 @@ const baseTheme = {
         error: "#6d100b",
         loadingCircleBorder: "#f3f3f3",
         loadingCircleMovingPart: "#3498db",
+        LanguageSelectorBackground: "white"
     },
     breakpoints: {
         extraSmall: "370",

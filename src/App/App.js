@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { useThemeSelection } from "../useThemeSelection";
 import { useGetDataFromAPI } from "../useGetDataFromAPI";
 import { useTranslation } from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 welcome();
 
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <LanguageSelector />
       <Main $isDocumentThemeDark={isDocumentThemeDark}>
         <BackgroundButton onClick={changeDocumentTheme}>{t("App.turnOn")} {!isDocumentThemeDark ? t("App.dark") : t("App.bright")} {t("App.theme")}</BackgroundButton>
         <Container>
@@ -57,7 +59,7 @@ function App() {
               </LoadingContainer>
             )
             :
-            statusForDataAPI ==="error" ? (
+            statusForDataAPI === "error" ? (
               <PotentialError>
                 {t("App.error")}
               </PotentialError>
@@ -69,7 +71,7 @@ function App() {
                   changeCurrencyFrom={changeCurrencyFrom}
                   currencyTo={currencyTo}
                   changeCurrencyTo={changeCurrencyTo}
-                  dataAPI = {dataAPI}
+                  dataAPI={dataAPI}
                 />
               )
           }
